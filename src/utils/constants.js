@@ -38,3 +38,47 @@ exports.PAYMENT_STATUS = {
   PAID: 'paid',
   REFUNDED: 'refunded'
 }; 
+
+// Event Location
+exports.EVENT_LOCATION = {
+  BANQUET_HALL: 'banquet hall',
+  OPEN_SPACE: 'open space',
+  RESTAURANT: 'restaurant',
+  OTHER: 'other'
+};
+
+// Event Type
+exports.EVENT_TYPE = {
+  ENTERTAINMENT: 'entertainment',
+  SPORTS: 'sports',
+  DINING: 'dining',
+  WORKSHOP: 'workshop',
+  CULTURAL: 'cultural',
+  KIDS: 'kids',
+  OTHER: 'other'
+};
+
+// Event Status
+exports.EVENT_STATUS = {
+  PENDING: 'pending',
+  CONFIRMED: 'confirmed',
+  CANCELLED: 'cancelled',
+  COMPLETED: 'completed',
+  POSTPONED: 'postponed',
+  ONGOING: 'ongoing'
+};
+
+// Event Payment Status
+exports.EVENT_PAYMENT_STATUS = {
+  PENDING: 'pending',
+  PARTIAL: 'partial',
+  PAID: 'paid',
+  REFUNDED: 'refunded'
+};
+
+// Event Participant Status
+exports.EVENT_PARTICIPANT_STATUS = {
+  REGISTERED: 'registered',
+  ATTENDED: 'attended',
+  CANCELLED: 'cancelled'
+};

@@ -1,6 +1,6 @@
 const Booking = require('../models/booking.model');
 const Room = require('../models/room.model');
-const logger = require('../utils/logger');
+const { logger } = require('../utils/logger');
 
 // Create a new booking
 exports.createBooking = async (req, res) => {

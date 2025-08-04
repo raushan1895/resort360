@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { EVENT_LOCATION, EVENT_TYPE, EVENT_STATUS, EVENT_PAYMENT_STATUS, EVENT_PARTICIPANT_STATUS } = require('../utils/constants');
 
 const eventSchema = new mongoose.Schema({
   title: {
@@ -13,7 +14,7 @@ const eventSchema = new mongoose.Schema({
   type: {
     type: String,
     required: [true, 'Event type is required'],
-    enum: ['entertainment', 'sports', 'dining', 'workshop', 'cultural', 'kids', 'other']
+    enum: Object.values(EVENT_TYPE)
   },
   startDate: {
     type: Date,
@@ -26,15 +27,12 @@ const eventSchema = new mongoose.Schema({
   location: {
     name: {
       type: String,
-      required: [true, 'Event location name is required']
+      enum: Object.values(EVENT_LOCATION),
+      default: EVENT_LOCATION.BANQUET_HALL
     },
-    coordinates: {
-      type: {
-        type: String,
-        enum: ['Point'],
-        default: 'Point'
-      },
-      coordinates: [Number]
+    location_id: {
+      type: mongoose.Schema.ObjectId,
+      required: [true, 'Event location is required']
     }
   },
   capacity: {
@@ -45,10 +43,6 @@ const eventSchema = new mongoose.Schema({
   price: {
     type: Number,
     default: 0
-  },
-  isComplimentary: {
-    type: Boolean,
-    default: false
   },
   participants: [{
     guest: {
@@ -61,8 +55,8 @@ const eventSchema = new mongoose.Schema({
     },
     status: {
       type: String,
-      enum: ['registered', 'attended', 'cancelled'],
-      default: 'registered'
+      enum: Object.values(EVENT_PARTICIPANT_STATUS),
+      default: EVENT_PARTICIPANT_STATUS.REGISTERED
     }
   }],
   organizer: {
@@ -79,8 +73,13 @@ const eventSchema = new mongoose.Schema({
   }],
   status: {
     type: String,
-    enum: ['scheduled', 'in-progress', 'completed', 'cancelled'],
-    default: 'scheduled'
+    enum: Object.values(EVENT_STATUS),
+    default: EVENT_STATUS.PENDING
+  },
+  paymentStatus: {
+    type: String,
+    enum: Object.values(EVENT_PAYMENT_STATUS),
+    default: EVENT_PAYMENT_STATUS.PENDING
   },
   tags: [{
     type: String

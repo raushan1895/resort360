@@ -1,8 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const path = require('path');
 const { logger } = require('./utils/logger');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -22,6 +20,7 @@ const roomRoutes = require('./routes/room.routes');
 const bookingRoutes = require('./routes/booking.routes');
 const eventRoutes = require('./routes/event.routes');
 const userRoutes = require('./routes/user.routes');
+const banquetRoutes = require('./routes/banquet.routes');
 
 // Create Express app
 const app = express();
@@ -50,6 +49,7 @@ app.use('/api/rooms', roomRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/banquets', banquetRoutes);
 
 // Error handling
 app.use(errorHandler);

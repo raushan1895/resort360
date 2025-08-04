@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
-const logger = require('../utils/logger');
+const { logger } = require('../utils/logger');
 const { USER_ROLES } = require('../utils/constants');
 
 // Protect routes - Authentication middleware
